@@ -14,4 +14,4 @@ Cái này đơn giản hơn chủ yếu chữ nghĩa vs phân loại thôi
 
 => Việc cần làm:
 Vì dự tính sẽ chạy server riêng nên để có dữ liệu thì cần phải thiết kế database, ban đầu biên tập tạm vài sample để chạy thôi
----OVER---
+----OVER----
