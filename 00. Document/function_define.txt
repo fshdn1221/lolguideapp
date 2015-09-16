@@ -1,1 +1,17 @@
-test_first_commit
+File_Log_20150916_1406
+Làm cái app vui vui gọi là train vs practise skill thôi :D Vì cái này lượng data k nhỏ, ảnh nhiều nên focus khả năng tối ưu lượng dữ liệu vs cả animation cho nó bắt mắt tí :D
+
+Danh sách chức năng:
+1. Thông số tướng: tham khảo theo http://leagueoflegends.wikia.com/wiki/Aatrox
+Trong này sẽ gồm một số chức năng nhỏ hơn 
+	1.1: Thông số tướng
+	1.2: Trang phục
+	1.2: Guide (cái này tính sau)
+2. Item: tham khảo http://leagueoflegends.wikia.com/wiki/Items
+Cái này đơn giản hơn chủ yếu chữ nghĩa vs phân loại thôi
+3. Setting: để đó chứ chưa có gì, chắc cho thay đổi theme =))
+4. Credit: đánh dấu mấy thằng developer cái, có bị bắt bản quyền thì khỏi trốn
+
+=> Việc cần làm:
+Vì dự tính sẽ chạy server riêng nên để có dữ liệu thì cần phải thiết kế database, ban đầu biên tập tạm vài sample để chạy thôi
+---OVER---
