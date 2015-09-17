@@ -1,0 +1,8 @@
+﻿=== LIST SCREEN ===
+1. SPLASH
+2. HOME (Giao diện cửa sổ...)
+2.1. Tướng
+	a, Sử dụng expandablelistview phân chia tướng theo các chủng loại (4 , 5 loại gì đó)
+	b, Search tướng: sử dụng icon (dưới bên phải màn hình theo meterial design)
+	
+	
