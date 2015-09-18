@@ -1,0 +1,104 @@
+1. FORMAT
+{
+	"skills":[
+		"skill":{
+			"name":"Frost Shot",
+			"role":"P01", /*one of PXX, QXX, WXX, EXX, RXX XX=number*/
+			"type":"Aura", /*one of Aura, Active, Passive,...*/
+			"attrs":[
+				{
+				"attr_name":"Cost",
+				"attr_val":"10% CURRENT HEALTH",
+				},
+				{
+				"attr_name":"Range",
+				"attr_val":"Range 650, Effect radius 225 Center radius 75",
+				},
+				{
+				"attr_name":"Cooldown",
+				"attr_val":"16 / 15 / 14 / 13 / 12",
+				},
+			],
+			"content":".......",
+			"img":"http://google.com"
+		}
+	],
+	"version":"2015.0.1"
+}
+2. EXAMPLE
+	"skills":[{
+			"name":"Blood Well",
+			"role":"P01",
+			"type":"Passive",
+			"attrs":[
+				{
+					"attr_name":"Static Cooldown",
+					"attr_val":[
+						{
+							"name":"level 1"
+							"val":"225"
+						},
+						{
+							"name":"level 6"
+							"val":"200"
+						},
+						{
+							"name":"level 11"
+							"val":"175"
+						},
+						{
+							"name":"level 16"
+							"val":"150"
+						},
+					]
+				}
+			],
+			"content":"Whenever Aatrox consumes a portion of his health, he stores it into his Blood Well, which can hold up to? 105 - 870 ?health. The Blood Well depletes by 2% per second if Aatrox hasn't dealt or received damage in the last 5 seconds. \nAatrox gains 0.3 / 0.35 / 0.4 / 0.45 / 0.5 / 0.55% bonus attack speed for every 1% in his Blood Well, up to a maximum of 30 / 35 / 40 / 45 / 50 / 55% bonus attack speed.\nUpon taking fatal damage, Aatrox enters Stasis icon stasis and drains his Blood Well, healing himself over the next 3 seconds for up to 35% of the Blood Well's maximum capacity, plus its stored health upon activation.",
+			"img":"http://google.com"
+		},
+		{
+			"name":"Dark Flight",
+			"role":"Q01",
+			"type":"Active",
+			"attrs":[
+				{
+					"attr_name":"Range",
+					"attr_val":[
+						{
+							"name":"Cast range",
+							"val":"650"
+						},
+						{
+							"name":"Effective radius",
+							"val":"225"
+						},
+						{
+							"name":"Epicenter radius",
+							"val":"75"
+						},
+					],
+				},
+				{
+					"attr_name":"Cost",
+					"attr_val":[
+						{
+							"name":"",
+							"val": "10% Current health"
+						}
+					],
+				},
+				{
+					"attr_name":"Cooldown",
+					"attr_val":[
+						{
+							"name":"",
+							"val": "16 / 15 / 14 / 13 / 12"
+						}
+					],
+				}
+			],
+			"content":"ACTIVE: Aatrox dashes to the target area after a brief delay, dealing  70 / 115 / 160 / 205 / 250 (+ 60% bonus AD) physical damage to nearby enemies upon landing and Airborne icon knocking up enemies in the epicenter for 1 second.",
+			"img":"http://google.com"
+		}
+	],
+	"version":"2015.0.1"
