@@ -1,7 +1,8 @@
-package com.creative.lolwikia;
+package com.creative.lolwikia.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import com.creative.lolwikia.R;
 
 public class MainActivity extends Activity {
 
