@@ -1,10 +1,10 @@
-package com.creative.lolwikia.activity;
+package com.creative.lolwikia.activity.main;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.creative.lolwikia.R;
+import com.creative.lolwikia.activity.BaseWikiActivity;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseWikiActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

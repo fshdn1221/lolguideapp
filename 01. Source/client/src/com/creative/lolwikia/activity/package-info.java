@@ -1,5 +1,5 @@
 /**
- * 
+ * This package contains all activity java class
  */
 /**
  * @author FSHDN
