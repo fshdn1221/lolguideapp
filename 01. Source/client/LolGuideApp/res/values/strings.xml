@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <resources>
 
     <string name="app_name">LolGuideApp</string>
     <string name="hello_world">Hello world!</string>
 
 </resources>
+=======
+<resources>
+
+    <string name="app_name">LolGuideApp</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
+>>>>>>> ab1aa24c323130695e022af4cf2aef1eb0befd7f
