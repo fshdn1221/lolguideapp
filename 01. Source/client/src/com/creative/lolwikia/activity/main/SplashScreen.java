@@ -36,11 +36,7 @@ public class SplashScreen extends Activity {
 
             @Override
             public void run() {
-                if (!flagDataLoaded) {
-                    flagDataLoaded = true;
-                } else {
-                    startMainScreen();
-                }
+                startMainScreen();
             }
         }, SPLASH_TIME_OUT);
     }
@@ -49,12 +45,16 @@ public class SplashScreen extends Activity {
      * Start main activity
      */
     private void startMainScreen() {
-        // Start main activity
-        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-        startActivity(intent);
+        if (!flagDataLoaded) {
+            flagDataLoaded = true;
+        } else {
+            // Start main activity
+            Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+            startActivity(intent);
 
-        // Close this activity
-        finish();
+            // Close this activity
+            finish();
+        }
     }
 
     /**
@@ -91,11 +91,7 @@ public class SplashScreen extends Activity {
         @Override
         protected void onPostExecute(Integer result) {
             super.onPostExecute(result);
-            if (!flagDataLoaded) {
-                flagDataLoaded = true;
-            } else {
-                startMainScreen();
-            }
+            startMainScreen();
         }
     }
 }
