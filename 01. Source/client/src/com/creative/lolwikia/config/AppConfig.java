@@ -19,10 +19,10 @@ public class AppConfig {
     private static AppConfig mInstance;
 
     private AppConfig(Context context) {
+        mConfig = new Properties();
         try {
             InputStream configFile = context.getResources().getAssets()
                     .open("config.properties");
-            mConfig = new Properties();
             mConfig.load(configFile);
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,9 +1,12 @@
 package com.creative.lolwikia.data.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.creative.lolwikia.data.database.DBConst;
+import com.creative.lolwikia.data.model.itf.CursorDeserializer;
 import com.creative.lolwikia.data.model.itf.DatabaseAdapter;
 
 /**
@@ -13,12 +16,18 @@ import com.creative.lolwikia.data.model.itf.DatabaseAdapter;
  * @param <T>
  */
 public abstract class BaseWikiaFactory<T extends BaseWikiaModel> implements
-        DatabaseAdapter<T> {
+        DatabaseAdapter<T>, CursorDeserializer<T> {
 
     @Override
-    public void toContentValues(ContentValues target, T t) {
-        target.put(DBConst.BaseTable.COL_ID, t.getId());
-        target.put(DBConst.BaseTable.COL_VERSION, t.getVersion());
+    public void toContentValues(ContentValues target, T input) {
+        target.put(DBConst.BaseTable.COL_ID, input.getId());
+        target.put(DBConst.BaseTable.COL_VERSION, input.getVersion());
+    }
+
+    @Override
+    public void deserialize(Cursor input, T target) {
+        target.setId(input.getString(input.getColumnIndex(DBConst.BaseTable.COL_ID)));
+        target.setVersion(input.getLong(input.getColumnIndex(DBConst.BaseTable.COL_VERSION)));
     }
 
     /**
@@ -130,5 +139,43 @@ public abstract class BaseWikiaFactory<T extends BaseWikiaModel> implements
             return ret;
         }
         return false;
+    }
+
+    /**
+     * Get empty model
+     * @return
+     */
+    protected abstract T getPrototype();
+
+    /**
+     * Get single-object from cursor
+     * @param cs input cursor
+     * @return object that deserialized from input
+     */
+    public T objectFromCursor(Cursor cs) {
+        if (cs != null && cs.moveToFirst()) {
+            T t = this.getPrototype();
+            this.deserialize(cs, t);
+            return t;
+        }
+        return null;
+    }
+
+    /**
+     * Get a list of objects from cursor
+     * @param cs input cursor
+     * @return list that deserialized from input
+     */
+    public List<T> listFromCursor(Cursor cs) {
+        if (cs != null && cs.moveToFirst()) {
+            List<T> ret = new ArrayList<T>();
+            do {
+                T t = this.getPrototype();
+                this.deserialize(cs, t);
+                ret.add(t);
+            } while (cs.moveToNext());
+            return ret;
+        }
+        return null;
     }
 }
