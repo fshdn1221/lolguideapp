@@ -5,6 +5,7 @@ import com.creative.lolwikia.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Window;
 
 /**
@@ -17,7 +18,7 @@ import android.view.Window;
  */
 public class SplashScreen extends Activity {
 
-    private static final long TIME_SLEEP = 3000L;
+    private static final long SPLASH_TIME_OUT = 3000L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,27 +26,17 @@ public class SplashScreen extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.screen_splash);
 
-        Thread timerThread = new Thread(new Runnable() {
-
+        new Handler().postDelayed(new Runnable() {
+            
             @Override
             public void run() {
-                try {
-                    Thread.sleep(TIME_SLEEP);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    // Start main activity
-                    Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                    startActivity(intent);
-                }
+                // Start main activity
+                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                startActivity(intent);
+                
+                // Close this activity
+                finish();
             }
-        });
-        timerThread.start();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
+        }, SPLASH_TIME_OUT);
     }
 }
