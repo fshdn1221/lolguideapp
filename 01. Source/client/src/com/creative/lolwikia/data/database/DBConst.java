@@ -9,6 +9,9 @@ public class DBConst {
 
     public static class BaseTable {
         public static final String COL_ID = "tid";
+        /**
+         * 
+         */
         public static final String COL_VERSION = "version";
     }
 }
