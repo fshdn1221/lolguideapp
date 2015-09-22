@@ -3,6 +3,7 @@ package com.creative.lolwikia.data.model;
 import java.util.List;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import com.creative.lolwikia.data.database.DBConst;
 import com.creative.lolwikia.data.model.itf.DatabaseAdapter;
 
 /**
@@ -13,6 +14,12 @@ import com.creative.lolwikia.data.model.itf.DatabaseAdapter;
  */
 public abstract class BaseWikiaFactory<T extends BaseWikiaModel> implements
         DatabaseAdapter<T> {
+
+    @Override
+    public void toContentValues(ContentValues target, T t) {
+        target.put(DBConst.BaseTable.COL_ID, t.getId());
+        target.put(DBConst.BaseTable.COL_VERSION, t.getVersion());
+    }
 
     /**
      * Insert a new record to database
