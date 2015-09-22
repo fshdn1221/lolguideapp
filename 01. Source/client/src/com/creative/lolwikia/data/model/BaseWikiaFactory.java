@@ -5,6 +5,12 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import com.creative.lolwikia.data.model.itf.DatabaseAdapter;
 
+/**
+ * Basic database adapter
+ * @author FSHDN
+ * @since Sep 22, 2015
+ * @param <T>
+ */
 public abstract class BaseWikiaFactory<T extends BaseWikiaModel> implements
         DatabaseAdapter<T> {
 
