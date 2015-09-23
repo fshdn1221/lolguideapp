@@ -4,33 +4,49 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 
 /**
  * Application configurations
+ * 
  * @author FSHDN
  * @since Sep 22, 2015
  */
 public class AppConfig {
 
     public static final String ATTR_SPLASH_TIMEOUT = "splash_min_dur";
+    private static final String APP_SETTING_FILENAME = "config.properties";
 
     Properties mConfig;
+    SharedPreferences mSettings;
 
     private static AppConfig mInstance;
 
     private AppConfig(Context context) {
+        init(context);
+    }
+
+    private void init(Context context) {
+        loadConfigurationFile(context);
+        loadSettings(context);
+    }
+
+    private void loadConfigurationFile(Context context) {
         mConfig = new Properties();
         try {
-            InputStream configFile = context.getResources().getAssets()
-                    .open("config.properties");
-            mConfig.load(configFile);
+            InputStream in = context.getAssets().open(APP_SETTING_FILENAME);
+            mConfig.load(in);
         } catch (IOException e) {
-            e.printStackTrace();
-            //TODO push log
+            Log.e(getClass().getSimpleName(), "Cannot load configuration file. Cause: " + e.getMessage());
         }
     }
 
-    public static AppConfig getInstance(Context context){
+    private void loadSettings(Context context){
+        mSettings = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
+    }
+
+    public static AppConfig getInstance(Context context) {
         if (mInstance == null) {
             mInstance = new AppConfig(context);
         }
@@ -43,7 +59,7 @@ public class AppConfig {
 
     public long getLongProperty(String name, long defaultValue) {
         String config = mConfig.getProperty(name, null);
-        if (config != null){
+        if (config != null) {
             try {
                 defaultValue = Long.parseLong(config);
             } catch (NumberFormatException nfe) {
@@ -55,7 +71,7 @@ public class AppConfig {
 
     public int getIntProperty(String name, int defaultValue) {
         String config = mConfig.getProperty(name, null);
-        if (config != null){
+        if (config != null) {
             try {
                 defaultValue = Integer.parseInt(config);
             } catch (NumberFormatException nfe) {
@@ -67,7 +83,7 @@ public class AppConfig {
 
     public float getFloatProperty(String name, float defaultValue) {
         String config = mConfig.getProperty(name, null);
-        if (config != null){
+        if (config != null) {
             try {
                 defaultValue = Float.parseFloat(config);
             } catch (NumberFormatException nfe) {
@@ -75,5 +91,9 @@ public class AppConfig {
             }
         }
         return defaultValue;
+    }
+
+    public SharedPreferences getSetting(){
+        return mSettings;
     }
 }

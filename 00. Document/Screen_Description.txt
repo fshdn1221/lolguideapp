@@ -1,8 +1,19 @@
 ﻿=== LIST SCREEN ===
 1. SPLASH
+	a. Công việc cần làm:
+		- Trong lần load đầu tiên, tải về danh sách tướng và đồ (thông tin căn bản, hoàn toàn là text)
+		- Những lần sau chỉ cần kiểm tra cập nhật thôi
+		- Xong việc chuyển qua màn hình home
 2. HOME (Giao diện cửa sổ...)
+	a. Công việc cần làm:
+		- Chủ yếu là dữ liệu tĩnh vì thế k cần load gì thêm.
+		- Có 1 button search (FloatigButton). Button này sẽ search dữ liệu tổng quan của app (multi-suggestion).
+		 Chọn nội dung thì chuyển sang màn hình chi tiết tùy thuộc vào loại nội dung được chọn
 2.1. Tướng
-	a, Sử dụng expandablelistview phân chia tướng theo các chủng loại (4 , 5 loại gì đó)
-	b, Search tướng: sử dụng icon (dưới bên phải màn hình theo meterial design)
-	
+	a. Sử dụng expandablelistview phân chia tướng theo các chủng loại (4 , 5 loại gì đó)
+	b. Search tướng: sử dụng icon (dưới bên phải màn hình theo meterial design).
+	Khi nội dung được chọn thì chuyển qua màn hình chi tiết tướng
+2.1.1 Chi tiết tướng
+	CoordinatorLayout
+	Phần này sẽ load thêm dữ liệu và ảnh từ server khi cần thiết (chưa có, cần cập nhật,... ) và cache lại
 	
