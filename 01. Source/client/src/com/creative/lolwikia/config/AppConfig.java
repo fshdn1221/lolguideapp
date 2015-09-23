@@ -12,7 +12,7 @@ import android.content.Context;
  */
 public class AppConfig {
 
-    public static final String SPLASH_MIN_DURATION = "splash_min_dur";
+    public static final String ATTR_SPLASH_TIMEOUT = "splash_min_dur";
 
     Properties mConfig;
 
@@ -37,8 +37,43 @@ public class AppConfig {
         return mInstance;
     }
 
-    public String getProperty(String name, String defaultValue) {
+    public String getStringValueProperty(String name, String defaultValue) {
         return mConfig.getProperty(name, defaultValue);
     }
 
+    public long getLongProperty(String name, long defaultValue) {
+        String config = mConfig.getProperty(name, null);
+        if (config != null){
+            try {
+                defaultValue = Long.parseLong(config);
+            } catch (NumberFormatException nfe) {
+                nfe.printStackTrace();
+            }
+        }
+        return defaultValue;
+    }
+
+    public int getIntProperty(String name, int defaultValue) {
+        String config = mConfig.getProperty(name, null);
+        if (config != null){
+            try {
+                defaultValue = Integer.parseInt(config);
+            } catch (NumberFormatException nfe) {
+                nfe.printStackTrace();
+            }
+        }
+        return defaultValue;
+    }
+
+    public float getFloatProperty(String name, float defaultValue) {
+        String config = mConfig.getProperty(name, null);
+        if (config != null){
+            try {
+                defaultValue = Float.parseFloat(config);
+            } catch (NumberFormatException nfe) {
+                nfe.printStackTrace();
+            }
+        }
+        return defaultValue;
+    }
 }

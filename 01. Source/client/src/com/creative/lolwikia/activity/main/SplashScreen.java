@@ -1,13 +1,13 @@
 package com.creative.lolwikia.activity.main;
 
-import com.creative.lolwikia.R;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
+import com.creative.lolwikia.R;
+import com.creative.lolwikia.activity.BaseWikiActivity;
+import com.creative.lolwikia.config.AppConfig;
 
 /**
  * Splash screen
@@ -17,10 +17,10 @@ import android.view.Window;
  * @author ThanhVV
  *
  */
-public class SplashScreen extends Activity {
+public class SplashScreen extends BaseWikiActivity {
 
     public static final String TAG = "SplashScreen";
-    public static final long SPLASH_TIME_OUT = 3000L;
+    public static final long DEF_SPLASH_TIME_OUT = 3000L;
     private boolean flagDataLoaded = false;
 
     @Override
@@ -28,7 +28,8 @@ public class SplashScreen extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.screen_splash);
-
+        long splashTimeOut = getConfiguration()
+                .getLongProperty(AppConfig.ATTR_SPLASH_TIMEOUT, DEF_SPLASH_TIME_OUT);
         // Load data from server store into database
         new LoadData().execute();
 
@@ -38,7 +39,7 @@ public class SplashScreen extends Activity {
             public void run() {
                 startMainScreen();
             }
-        }, SPLASH_TIME_OUT);
+        }, splashTimeOut);
     }
 
     /**
