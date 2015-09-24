@@ -82,3 +82,12 @@ CREATE TABLE `lol_wikia`.`t04champskill` (
 	PRIMARY KEY (`tid`)
 ) ENGINE = InnoDB;
 /*T04 Champion skill create script end here*/
+
+/*T05 Champion secondbar type  create script start here*/
+CREATE TABLE `lol_wikia`.`t05secbartype` (
+	`tid` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, 
+	`secondbar_type` VARCHAR(50) NOT NULL, 
+	`updatetime` BIGINT(50) NOT NULL, 
+	PRIMARY KEY (`tid`)
+) ENGINE = InnoDB;
+/*T05 Champion secondbar type create script end here*/
